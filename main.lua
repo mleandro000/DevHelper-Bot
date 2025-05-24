@@ -1,10 +1,7 @@
 if os_name == "windows" then 
     os.execute("chcp 65001")
-    os.execute("cls")
 end
-if os_name == "linux" then 
-    os.execute("clear")
-end
+
 
 relative_load("system.lua")
 -- do projeto e não do lua
@@ -18,6 +15,12 @@ local COLOR_RESET = "\27[0m"
 
 -- Function to initialize and configure LLM
 function initialize_llm()
+    -- Clear terminal based on OS
+    if os_name == "windows" then 
+        os.execute("cls")
+    elseif os_name == "linux" then 
+        os.execute("clear")
+    end
     -- Initialize an LLM with no system permissions (safe for chat-only use)
     local llm = newLLM({read=true,write=true,list=true,execute=true, delete = true})
     -- Set a system prompt for the chatbot's behavior
@@ -43,7 +46,6 @@ while true do
     end
     if user_input == "reset" then
         llm = initialize_llm()
-        os.execute('cls')
         goto continue
     end
     -- Add user input as a prompt
