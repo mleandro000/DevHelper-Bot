@@ -4,6 +4,7 @@ end
 
 
 relative_load("system.lua")
+relative_load("entrys.lua")
 -- do projeto e não do lua
 
 if os_name == "windows" then 
@@ -25,6 +26,7 @@ function initialize_llm()
     local llm = newLLM({read=true,write=true,list=true,execute=true, delete = true})
     -- Set a system prompt for the chatbot's behavior
     configure_system(llm)
+    configure_entries(llm)
     return llm
 end
 
