@@ -1,7 +1,7 @@
 
 function configure_entries(llm)
 
-    local text_to_insert = ""
+    local text_to_insert = "files:\n"
     local total_entries = argv.get_flag_size({ "entries","e" })
     for i = 1,total_entries do
         local current_entrie = argv.get_flag_arg_by_index({ "entries","e" }, i)
