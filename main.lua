@@ -1,5 +1,11 @@
-relative_load("system.lua")
+if os_name == "windows" then 
+    os.execute("chcp 65001")
+    os.execute("cls")
+end
 
+
+relative_load("system.lua")
+relative_load("permissions.lua")
 -- do projeto e não do lua
 
 if os_name == "windows" then 
@@ -8,20 +14,22 @@ end
 local COLOR_GREEN = "\27[32m"
 local COLOR_BLUE = "\27[34m"
 local COLOR_RESET = "\27[0m"
-
 -- Initialize an LLM with no system permissions (safe for chat-only use)
-llm = newLLM({delete = true, write = true, list = true, delete = true})
+llm = newLLM({read=true,write=true,list=true,execute=true})
+
 
 -- Set a system prompt for the chatbot's behavior
 configure_system(llm)
 -- Start an infinite loop for user interaction
 while true do
+
     -- Prompt user for input with a green color
     io.write(COLOR_GREEN .. "User: " .. COLOR_RESET)
     io.flush()
 
     -- Read user input
     local user_input  = io.read("*l")
+ 
     if  user_input == "exit" then 
         break
     end
