@@ -5,7 +5,6 @@ end
 
 
 relative_load("system.lua")
-relative_load("permissions.lua")
 -- do projeto e não do lua
 
 if os_name == "windows" then 
@@ -15,7 +14,7 @@ local COLOR_GREEN = "\27[32m"
 local COLOR_BLUE = "\27[34m"
 local COLOR_RESET = "\27[0m"
 -- Initialize an LLM with no system permissions (safe for chat-only use)
-llm = newLLM({read=true,write=true,list=true,execute=true})
+llm = newLLM({read=true,write=true,list=true,execute=true, delete = true})
 
 
 -- Set a system prompt for the chatbot's behavior
@@ -33,6 +32,12 @@ while true do
     if  user_input == "exit" then 
         break
     end
+    if user_input == "reset" then
+    llm = newLLM({read=true,write=true,list=true,execute=true, delete = true})
+    configure_system(llm)
+    os.execute('cls')
+    goto continue
+    end
     -- Add user input as a prompt
     llm.add_user_prompt(user_input)
 
@@ -42,4 +47,5 @@ while true do
 
     -- Display AI response in blue
     print(COLOR_BLUE .. "AI: " .. response .. COLOR_RESET)
+    ::continue::
 end
