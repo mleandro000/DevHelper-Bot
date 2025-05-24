@@ -25,8 +25,8 @@ function initialize_llm()
     -- Initialize an LLM with no system permissions (safe for chat-only use)
     local llm = newLLM({read=true,write=true,list=true,execute=true, delete = true})
     -- Set a system prompt for the chatbot's behavior
+    configure_entries(llm) 
     configure_system(llm)
-    configure_entries(llm)
     return llm
 end
 

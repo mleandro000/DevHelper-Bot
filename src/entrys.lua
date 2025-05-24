@@ -1,7 +1,7 @@
 
 function configure_entries(llm)
 
-    local text_to_insert = "files:\n"
+    local text_to_insert = "user entrys\n:"
     local total_entries = argv.get_flag_size({ "entries","e" })
     for i = 1,total_entries do
         local current_entrie = argv.get_flag_arg_by_index({ "entries","e" }, i)
@@ -20,5 +20,5 @@ function configure_entries(llm)
             end
         end
     end 
-    llm.add_user_prompt(text_to_insert)
+    llm.add_system_prompt(text_to_insert)
 end
