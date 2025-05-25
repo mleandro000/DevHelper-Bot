@@ -49,7 +49,11 @@ function main()
 
     -- Initialize LLM using the function
     local llm = initialize_llm()
-
+    -- Start chat mode 
+    if os_name == "windows" then 
+        os.execute("chcp 65001")
+    end
+    
 
     if argv.flags_exist({ "prompt", "p" }) then
         local prompt = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "prompt", "p" },1))
@@ -72,10 +76,7 @@ function main()
         end
     end
 
-    -- Start chat mode 
-    if os_name == "windows" then 
-        os.execute("chcp 65001")
-    end
+
     resset_terminal()
 
     -- Start an infinite loop for user interaction
