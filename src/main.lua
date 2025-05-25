@@ -1,5 +1,3 @@
-
-
 relative_load("system.lua")
 relative_load("entrys.lua")
 -- do projeto e não do lua
@@ -52,6 +50,18 @@ function main()
         return 
     end
 
+    if argv.flags_exist({ "prompt_file", "pf" }) then
+        local prompt_file = argv.get_flag_arg_by_index({ "prompt_file", "pf" },1)
+        if dtw.isfile(prompt_file) then
+            local prompt_content = dtw.load_file(prompt_file)
+            llm.add_user_prompt(prompt_content)
+            local response = llm.generate()
+            show_response(response)
+            return
+        else
+            error("Prompt file " .. prompt_file .. " does not exist")
+        end
+    end
 
     -- Start chat mode 
     if os_name == "windows" then 
