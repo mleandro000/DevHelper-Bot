@@ -86,7 +86,7 @@ vibescript devbot --prompt "Your prompt here" --output path/to/output_file.txt
 
 ## License 📜
 
-This project is released into the public domain under the Unlicense - see the LICENSE file for details.
+This project is licensed under the MIT License - see the LICENSE file for details.
 
 ## 🤝 Contributing
 
