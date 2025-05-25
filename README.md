@@ -39,7 +39,7 @@ git clone https://github.com/mleandro000/DevHelper-Bot
 ### Step 4: Add DevBot to VibeScript Path
 
 ```bash
-vibescript add_script --file DevHelper-Bot/src/main.lua devbot2
+vibescript add_script --file DevHelper-Bot/src/main.lua devbot
 ```
 
 
