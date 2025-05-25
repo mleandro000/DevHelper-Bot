@@ -1,5 +1,2 @@
-o arquivo exemplo.md contem outro programa que também ultiliza o vibescript como 
-base 
-utilizando o exemplo.md , faça as instruções de instação do devbot(projeto atual),
-adicione as instruções de instaçaão em README.md
-escreva em README.md
+deixe esse readme mais profissional, adicionando emojis, flags de license, e todas os itens 
+de um projeto profissional , escreva em inglês, escreva em README.md

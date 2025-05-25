@@ -1,8 +1,8 @@
-# DevBot
+# DevBot 🤖
 
 DevBot is a versatile tool designed to assist developers in their daily tasks. It leverages AI to provide intelligent responses and automate various operations.
 
-## Features
+## Features 🚀
 
 - **Chat Mode**: Engage in a conversational interface where you can ask questions or provide prompts, and DevBot will respond accordingly.
 - **Prompt Mode**: Use the `--prompt` or `-p` flag to provide a prompt directly from the command line.
@@ -11,7 +11,7 @@ DevBot is a versatile tool designed to assist developers in their daily tasks. I
 - **Reset**: Use the `reset` command during chat mode to reset the AI's context.
 - **Exit**: Use the `exit` command to end the chat session.
 
-## Installation
+## Installation 🔧
 
 ### Prerequisites
 
@@ -42,7 +42,7 @@ vibescript add_script --file DevBot/devbot.lua devbot
 ```
 
 
-## Usage
+## Usage 💻
 
 ### Chat Mode
 
@@ -76,15 +76,17 @@ To save the AI's response to a file:
 vibescript devbot --prompt "Your prompt here" --output path/to/output_file.txt
 ```
 
-## Commands
+## Commands 📖
 
 - **reset**: Resets the AI's context during chat mode.
 - **exit**: Ends the chat session.
 
-## License
+## License 📜
 
 This project is released into the public domain under the Unlicense - see the LICENSE file for details.
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
+
+-----------------
