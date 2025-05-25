@@ -32,7 +32,7 @@ vibescript configure_model --model grok-2-latest --url https://api.x.ai/v1/chat/
 ### Step 3: Clone the Repository
 
 ```bash
-git clone https://github.com/your_username/DevBot.git
+git clone https://github.com/mleandro000/DevHelper-Bot
 ```
 
 ### Step 4: Add DevBot to VibeScript Path
