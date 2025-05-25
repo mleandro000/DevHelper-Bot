@@ -81,13 +81,6 @@ vibescript devbot --prompt "Your prompt here" --output path/to/output_file.txt
 - **reset**: Resets the AI's context during chat mode.
 - **exit**: Ends the chat session.
 
-## Color Coding
-
-DevBot uses color coding to distinguish between user input and AI responses:
-- **User Input**: Green
-- **AI Response**: Blue
-
-
 ## License
 
 This project is released into the public domain under the Unlicense - see the LICENSE file for details.
