@@ -28,9 +28,10 @@ function resset_terminal()
 end 
 
 function show_response(response)
-    local output = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "output", "o" },1))
+    local output = argv.get_flag_arg_by_index({ "output", "o" },1)
     if output then
-        dtw.write_file(output, response)
+
+        dtw.write_file(remove_non_ascii_if_windows(output), response)
         return 
     end 
     print(COLOR_BLUE .. "AI: " .. response .. COLOR_RESET)
