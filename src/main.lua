@@ -28,13 +28,21 @@ function resset_terminal()
 end 
 
 function show_response(response)
-    local output = argv.get_flag_arg_by_index({ "output", "o" },1)
+    local output = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "output", "o" },1))
     if output then
         dtw.write_file(output, response)
         return 
     end 
     print(COLOR_BLUE .. "AI: " .. response .. COLOR_RESET)
 end 
+
+function remove_non_ascii_if_windows(str)
+   if os_name == "windows" then 
+        return (str:gsub("[^\0-\127]+", ""))
+   end 
+   return str
+end
+
 
 function main()
 
@@ -43,7 +51,7 @@ function main()
 
 
     if argv.flags_exist({ "prompt", "p" }) then
-        local prompt = argv.get_flag_arg_by_index({ "prompt", "p" },1)
+        local prompt = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "prompt", "p" },1))
         llm.add_user_prompt(prompt)      
         local response = llm.generate()
         show_response(response)
@@ -51,7 +59,7 @@ function main()
     end
 
     if argv.flags_exist({ "prompt_file", "pf" }) then
-        local prompt_file = argv.get_flag_arg_by_index({ "prompt_file", "pf" },1)
+        local prompt_file = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "prompt_file", "pf" },1))
         if dtw.isfile(prompt_file) then
             local prompt_content = dtw.load_file(prompt_file)
             llm.add_user_prompt(prompt_content)
@@ -64,9 +72,9 @@ function main()
     end
 
     -- Start chat mode 
-    --if os_name == "windows" then 
-    --    os.execute("chcp 65001")
-    --end
+    if os_name == "windows" then 
+        os.execute("chcp 65001")
+    end
     resset_terminal()
 
     -- Start an infinite loop for user interaction

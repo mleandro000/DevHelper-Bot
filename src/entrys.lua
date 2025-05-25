@@ -2,9 +2,9 @@
 function configure_entries(llm)
 
     local text_to_insert = "user entrys\n:"
-    local total_entries = argv.get_flag_size({ "entries","e" })
+    local total_entries = remove_non_ascii_if_windows(argv.get_flag_size({ "entries","e" }))
     for i = 1,total_entries do
-        local current_entrie = argv.get_flag_arg_by_index({ "entries","e" }, i)
+        local current_entrie = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "entries","e" }, i))
        
         if dtw.isfile(current_entrie) then
             text_to_insert = "file: " .. current_entrie.."\n"
