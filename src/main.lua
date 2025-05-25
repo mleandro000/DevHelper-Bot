@@ -64,9 +64,9 @@ function main()
     end
 
     -- Start chat mode 
-    if os_name == "windows" then 
-        os.execute("chcp 65001")
-    end
+    --if os_name == "windows" then 
+    --    os.execute("chcp 65001")
+    --end
     resset_terminal()
 
     -- Start an infinite loop for user interaction
