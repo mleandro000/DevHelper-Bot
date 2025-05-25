@@ -4,7 +4,7 @@ relative_load("entrys.lua")
 relative_load("actions/chat.lua")
 relative_load("actions/prompt.lua")
 relative_load("actions/entrie_actions.lua")
-
+relative_load("algo.lua")
 -- do projeto e não do lua
 
 -- Function to initialize and configure LLM
