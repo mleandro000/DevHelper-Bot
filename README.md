@@ -11,6 +11,37 @@ DevBot is a versatile tool designed to assist developers in their daily tasks. I
 - **Reset**: Use the `reset` command during chat mode to reset the AI's context.
 - **Exit**: Use the `exit` command to end the chat session.
 
+## Installation
+
+### Prerequisites
+
+- [VibeScript](https://github.com/OUIsolutions/VibeScript) installed on your system
+
+### Step 1: Install VibeScript
+
+Visit the [VibeScript repository](https://github.com/OUIsolutions/VibeScript) and download the appropriate version for your operating system from the [releases page](https://github.com/OUIsolutions/VibeScript/releases/tag/0.2.0).
+
+### Step 2: Configure an AI Model
+
+Configure a VibeScript model. If you don't have one set up:
+
+```bash
+vibescript configure_model --model grok-2-latest --url https://api.x.ai/v1/chat/completions --key "your_api_key"
+```
+
+### Step 3: Clone the Repository
+
+```bash
+git clone https://github.com/your_username/DevBot.git
+```
+
+### Step 4: Add DevBot to VibeScript Path
+
+```bash
+vibescript add_script --file DevBot/devbot.lua devbot
+```
+
+
 ## Usage
 
 ### Chat Mode
@@ -56,35 +87,6 @@ DevBot uses color coding to distinguish between user input and AI responses:
 - **User Input**: Green
 - **AI Response**: Blue
 
-## Installation
-
-### Prerequisites
-
-- [VibeScript](https://github.com/OUIsolutions/VibeScript) installed on your system
-
-### Step 1: Install VibeScript
-
-Visit the [VibeScript repository](https://github.com/OUIsolutions/VibeScript) and download the appropriate version for your operating system from the [releases page](https://github.com/OUIsolutions/VibeScript/releases/tag/0.2.0).
-
-### Step 2: Configure an AI Model
-
-Configure a VibeScript model. If you don't have one set up:
-
-```bash
-vibescript configure_model --model grok-2-latest --url https://api.x.ai/v1/chat/completions --key "your_api_key"
-```
-
-### Step 3: Clone the Repository
-
-```bash
-git clone https://github.com/your_username/DevBot.git
-```
-
-### Step 4: Add DevBot to VibeScript Path
-
-```bash
-vibescript add_script --file DevBot/devbot.lua devbot
-```
 
 ## License
 
