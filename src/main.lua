@@ -1,14 +1,10 @@
-if os_name == "windows" then 
-    os.execute("chcp 65001")
-end
 
 
 relative_load("system.lua")
 relative_load("entrys.lua")
 -- do projeto e não do lua
 
-if os_name == "windows" then 
-end
+
 -- Define color variables
 local COLOR_GREEN = "\27[32m"
 local COLOR_BLUE = "\27[34m"
@@ -45,7 +41,7 @@ end
 function main()
 
     -- Initialize LLM using the function
-    llm = initialize_llm()
+    local llm = initialize_llm()
 
 
     if argv.flags_exist({ "prompt", "p" }) then
@@ -53,12 +49,14 @@ function main()
         llm.add_user_prompt(prompt)      
         local response = llm.generate()
         show_response(response)
-       
         return 
     end
 
+
     -- Start chat mode 
-    
+    if os_name == "windows" then 
+        os.execute("chcp 65001")
+    end
     resset_terminal()
 
     -- Start an infinite loop for user interaction
