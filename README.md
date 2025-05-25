@@ -52,6 +52,12 @@ To start DevBot in chat mode, simply run the script without any arguments. You w
 vibescript devbot
 ```
 
+### Chat Commands 📖
+
+- **reset**: Resets the AI's context during chat mode.
+- **exit**: Ends the chat session.
+
+
 ### Prompt Mode
 
 To use DevBot with a prompt directly from the command line:
@@ -76,10 +82,7 @@ To save the AI's response to a file:
 vibescript devbot --prompt "Your prompt here" --output path/to/output_file.txt
 ```
 
-## Commands 📖
 
-- **reset**: Resets the AI's context during chat mode.
-- **exit**: Ends the chat session.
 
 ## License 📜
 
