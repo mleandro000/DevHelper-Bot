@@ -10,6 +10,7 @@ DevBot is a versatile tool designed to assist developers in their daily tasks. I
 - **Output to File**: Use the `--output` or `-o` flag to save the AI's response to a file instead of displaying it in the terminal.
 - **Reset**: Use the `reset` command during chat mode to reset the AI's context.
 - **Exit**: Use the `exit` command to end the chat session.
+- **Entry Management**: Manage entries (files or directories) to be used as context for the AI.
 
 ## Installation 🔧
 
@@ -81,6 +82,31 @@ To save the AI's response to a file:
 ```bash
 vibescript devbot --prompt "Your prompt here" --output path/to/output_file.txt
 ```
+
+### Entry Management Commands
+
+DevBot allows you to manage entries (files or directories) that can be used as context for the AI:
+
+- **Subscribe Entry**: Add a file or directory as an entry with a specific name for later reference.
+  ```bash
+  vibescript devbot subscribe_entrie my_entry_name --path /path/to/file_or_directory
+  ```
+
+- **List Entries**: Display all registered entries with their names and paths.
+  ```bash
+  vibescript devbot list_entries
+  ```
+
+- **Remove Entry**: Delete a specific entry by its name.
+  ```bash
+  vibescript devbot remove_entrie entry_name
+  ```
+
+- **Use Entries in Chat/Prompt**: Reference entries in your chat or prompt commands to include their content as context for the AI (can specify multiple entries with repeated flags).
+  ```bash
+  vibescript devbot --entries entry_name1 --entries entry_name2
+  vibescript devbot --prompt "Your prompt here" --entries entry_name1
+  ```
 
 
 
