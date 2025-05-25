@@ -3,6 +3,8 @@ relative_load("system.lua")
 relative_load("entrys.lua")
 relative_load("actions/chat.lua")
 relative_load("actions/prompt.lua")
+relative_load("actions/entrie_actions.lua")
+
 -- do projeto e não do lua
 
 -- Function to initialize and configure LLM
@@ -34,7 +36,6 @@ function main()
         os.execute("chcp 65001")
     end
 
-
     if argv.flags_exist({ "prompt", "p" }) then
         return promt_action()
     end
@@ -42,7 +43,18 @@ function main()
     if argv.flags_exist({ "prompt_file", "pf" }) then
         return prompt_file_action()
     end
+
+    local action = argv.get_next_unused()
     
+    if action == "subscribe_entrie" then 
+        return subscribe_entrie()
+    end 
+    if action == "list_entries" then 
+        return list_entries()
+    end 
+
+    
+
     chat()
 
 
