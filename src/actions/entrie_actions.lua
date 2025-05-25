@@ -4,6 +4,7 @@ function subscribe_entrie()
         print("--path not provided")
         return 
     end 
+    path = dtw.get_absolute_path(path)
     if not dtw.isdir(path) and not dtw.isfile(path) then 
         print("--path:"..path.." its not a file  or a dir")
         return 

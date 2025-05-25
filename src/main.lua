@@ -52,8 +52,8 @@ function main()
     if action == "list_entries" then 
         return list_entries()
     end 
-    if action == "remove_entries"  then
-        return remove_entries() 
+    if action == "remove_entrie"  then
+        return remove_entrie() 
     end
 
     
