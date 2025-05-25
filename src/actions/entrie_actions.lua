@@ -1,5 +1,3 @@
-
-
 function subscribe_entrie()
     local path = argv.get_flag_arg_by_index({ "path","p" },1)
     if not path then 
@@ -40,3 +38,20 @@ function list_entries()
     end 
 end 
 
+function remove_entrie()
+    local name = argv.get_next_unused()
+    if not name then 
+        print("name of entrie not provided")
+        return 
+    end 
+    local entries = get_prop("devbot_entries",{})
+    local new_entries = {}
+    for i=1,#entries do
+        local current = entries[i]
+        if current.name ~= name then
+            new_entries[#new_entries + 1] = current
+        end
+    end
+    set_prop("devbot_entries", new_entries)
+    print("Entry " .. name .. " removed successfully")
+end 
