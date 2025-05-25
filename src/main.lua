@@ -53,9 +53,10 @@ function main()
     if os_name == "windows" then 
         os.execute("chcp 65001")
     end
-    
+
 
     if argv.flags_exist({ "prompt", "p" }) then
+        llm.add_system_prompt("dont ask user anything, just make what he is asking in a rentless behavior")
         local prompt = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "prompt", "p" },1))
         llm.add_user_prompt(prompt)      
         local response = llm.generate()
@@ -64,6 +65,7 @@ function main()
     end
 
     if argv.flags_exist({ "prompt_file", "pf" }) then
+        llm.add_system_prompt("dont ask user anything, just make what he is asking in a rentless behavior")
         local prompt_file = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "prompt_file", "pf" },1))
         if dtw.isfile(prompt_file) then
             local prompt_content = dtw.load_file(prompt_file)
