@@ -31,7 +31,31 @@ function add_path_to_llm(already_added,llm,current_entrie)
     else 
         error("current entrie "..current_entrie.." its not a file or a dir")
     end 
+end
+
+function get_stored_entrie_path_by_name(entrie_name)
+    local saved_entries = get_prop("devbot_entries",{})
+    for i=1,#saved_entries do 
+        local current_stored_entrie = saved_entries[i]
+        if current_stored_entrie.name == entrie_name then 
+            return current_stored_entrie.path 
+        end 
+    end  
+    
 end 
+---the current entrie can be a file , a path, or a name of a stored entrie
+function get_converted_entrie_paths(current_entrie)
+    local stored_path =  get_stored_entrie_path_by_name(current_entrie)
+    --means it was stored as a name 
+    if stored_path then 
+        return {stored_path}
+    end 
+    
+    return {current_entrie} 
+    
+
+
+end
 
 function configure_entries(llm)
 
@@ -39,6 +63,10 @@ function configure_entries(llm)
     local total_entries = argv.get_flag_size({ "entries","e" })
     for i = 1,total_entries do
         local current_entrie = remove_non_ascii_if_windows(argv.get_flag_arg_by_index({ "entries","e" }, i))
-        add_path_to_llm(alrady_added_files,llm,current_entrie)
+        local entrie_paths = get_converted_entrie_paths(current_entrie)
+        for j=1,#entrie_paths do 
+            local current_path = entrie_paths[j]
+            add_path_to_llm(alrady_added_files,llm,current_path)
+        end 
     end 
 end
