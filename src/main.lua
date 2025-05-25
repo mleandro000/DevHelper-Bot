@@ -30,34 +30,47 @@ function initialize_llm()
     return llm
 end
 
--- Initialize LLM using the function
-llm = initialize_llm()
+function main()
 
--- Start an infinite loop for user interaction
-while true do
+    -- Initialize LLM using the function
+    llm = initialize_llm()
 
-    -- Prompt user for input with a green color
-    io.write(COLOR_GREEN .. "User: " .. COLOR_RESET)
-    io.flush()
 
-    -- Read user input
-    local user_input  = io.read("*l")
- 
-    if  user_input == "exit" then 
-        break
+    if argv.argv.flags_exist({ "prompt", "p" }) then
+        local prompt = argv.get_flag_arg_by_index({ "prompt", "p" },1)
+        llm.add_user_prompt(prompt)      
+        local response = llm.generate()
+        print(COLOR_BLUE .. "AI: " .. response .. COLOR_RESET)
+        return 
     end
-    if user_input == "reset" then
-        llm = initialize_llm()
-        goto continue
+
+
+    -- Start an infinite loop for user interaction
+    while true do
+
+        -- Prompt user for input with a green color
+        io.write(COLOR_GREEN .. "User: " .. COLOR_RESET)
+        io.flush()
+
+        -- Read user input
+        local user_input  = io.read("*l")
+    
+        if  user_input == "exit" then 
+            break
+        end
+        if user_input == "reset" then
+            llm = initialize_llm()
+            goto continue
+        end
+        -- Add user input as a prompt
+        llm.add_user_prompt(user_input)
+
+        -- Generate AI response
+        response = llm.generate()
+        llm.add_assistent_prompt(response) -- tell the llm to remember what it said
+
+        -- Display AI response in blue
+        print(COLOR_BLUE .. "AI: " .. response .. COLOR_RESET)
+        ::continue::
     end
-    -- Add user input as a prompt
-    llm.add_user_prompt(user_input)
-
-    -- Generate AI response
-    response = llm.generate()
-    llm.add_assistent_prompt(response) -- tell the llm to remember what it said
-
-    -- Display AI response in blue
-    print(COLOR_BLUE .. "AI: " .. response .. COLOR_RESET)
-    ::continue::
-end
+end 
